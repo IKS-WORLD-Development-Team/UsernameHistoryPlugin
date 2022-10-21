@@ -1,9 +1,9 @@
 package kr.iksworld.plugin.usernamehistory.dto.result;
 
-public class PlayerJoinResultDto {
+public class PlayerQuitResultDto {
     private String message;
 
-    public PlayerJoinResultDto(String message) {
+    public PlayerQuitResultDto(String message) {
         this.message = message;
     }
 
