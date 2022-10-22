@@ -1,13 +1,11 @@
 package kr.iksworld.plugin.usernamehistory.dto.result;
 
-public class PlayerQuitResultDto {
-    private String message;
-
-    public PlayerQuitResultDto(String message) {
-        this.message = message;
+public class PlayerQuitResultDto extends GeneralMessageResultDto {
+    public PlayerQuitResultDto() {
+        super();
     }
 
-    public String getMessage() {
-        return message;
+    public PlayerQuitResultDto(String message) {
+        super(message);
     }
 }

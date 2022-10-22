@@ -1,13 +1,11 @@
 package kr.iksworld.plugin.usernamehistory.dto.result;
 
-public class PlayerJoinResultDto {
-    private String message;
-
-    public PlayerJoinResultDto(String message) {
-        this.message = message;
+public class PlayerJoinResultDto extends GeneralMessageResultDto {
+    public PlayerJoinResultDto() {
+        super();
     }
 
-    public String getMessage() {
-        return message;
+    public PlayerJoinResultDto(String message) {
+        super(message);
     }
 }
