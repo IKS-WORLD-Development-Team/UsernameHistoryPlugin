@@ -1,12 +1,12 @@
-package kr.iksworld.plugin.usernamehistory.listener.impl;
+package kr.iksworld.plugin.usernamehistory.controller.impl;
 
 import kr.iksworld.plugin.usernamehistory.dto.event.PlayerJoinEventDto;
 import kr.iksworld.plugin.usernamehistory.dto.result.PlayerJoinResultDto;
-import kr.iksworld.plugin.usernamehistory.listener.PlayerJoinListener;
+import kr.iksworld.plugin.usernamehistory.controller.PlayerJoinController;
 
-public class PlayerJoinListenerImpl implements PlayerJoinListener {
+public class PlayerJoinControllerImpl implements PlayerJoinController {
     @Override
-    public PlayerJoinResultDto onPlayerJoinEvent(PlayerJoinEventDto event) {
+    public PlayerJoinResultDto playerJoin(PlayerJoinEventDto event) {
         return new PlayerJoinResultDto(
                 String.format("Username: %s, UUID: %s, Time: %ld",
                         event.getUsername(),

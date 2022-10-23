@@ -1,13 +1,13 @@
-package kr.iksworld.plugin.usernamehistory.listener.impl;
+package kr.iksworld.plugin.usernamehistory.controller.impl;
 
 import kr.iksworld.plugin.usernamehistory.dto.event.PlayerQuitEventDto;
 import kr.iksworld.plugin.usernamehistory.dto.result.PlayerQuitResultDto;
-import kr.iksworld.plugin.usernamehistory.listener.PlayerQuitListener;
+import kr.iksworld.plugin.usernamehistory.controller.PlayerQuitController;
 
-public class PlayerQuitListenerImpl implements PlayerQuitListener {
+public class PlayerQuitControllerImpl implements PlayerQuitController {
 
     @Override
-    public PlayerQuitResultDto onPlayerQuitEvent(PlayerQuitEventDto event) {
+    public PlayerQuitResultDto playerQuit(PlayerQuitEventDto event) {
         return new PlayerQuitResultDto(
                 String.format("Username: %s, UUID: %s, Time: %ld",
                         event.getUsername(),

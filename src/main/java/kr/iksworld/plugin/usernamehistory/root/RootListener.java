@@ -4,7 +4,7 @@ import kr.iksworld.plugin.usernamehistory.dto.event.PlayerJoinEventDto;
 import kr.iksworld.plugin.usernamehistory.dto.event.PlayerQuitEventDto;
 import kr.iksworld.plugin.usernamehistory.dto.result.PlayerJoinResultDto;
 import kr.iksworld.plugin.usernamehistory.dto.result.PlayerQuitResultDto;
-import kr.iksworld.plugin.usernamehistory.listener.ListenerFactory;
+import kr.iksworld.plugin.usernamehistory.controller.ControllerFactory;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -20,7 +20,7 @@ public class RootListener implements Listener {
                 System.currentTimeMillis()
         );
 
-        PlayerJoinResultDto resultDto = ListenerFactory.getInstance().playerJoinListener().onPlayerJoinEvent(playerJoinEventDto);
+        PlayerJoinResultDto resultDto = ControllerFactory.getInstance().playerJoinController().playerJoin(playerJoinEventDto);
     }
 
     @EventHandler
@@ -31,6 +31,6 @@ public class RootListener implements Listener {
                 System.currentTimeMillis()
         );
 
-        PlayerQuitResultDto resultDto = ListenerFactory.getInstance().playerQuitListener().onPlayerQuitEvent(playerQuitEventDto);
+        PlayerQuitResultDto resultDto = ControllerFactory.getInstance().playerQuitController().playerQuit(playerQuitEventDto);
     }
 }
