@@ -1,17 +1,21 @@
 package kr.iksworld.plugin.usernamehistory.dto.result;
 
-public class GeneralMessageResultDto {
-    private String message;
-    private boolean isContainMessage;
+public class GeneralMessageResultDto extends ResultDto {
+    private String message = "";
+    private boolean isContainMessage = false;
 
     public GeneralMessageResultDto() {
-        this.message = "";
-        this.isContainMessage = false;
+
     }
 
-    public GeneralMessageResultDto(String message) {
+    public void setMessage(String message) {
         this.message = message;
         this.isContainMessage = true;
+    }
+
+    public void deleteMessage() {
+        this.message = "";
+        this.isContainMessage = false;
     }
 
     public boolean isContainMessage() {

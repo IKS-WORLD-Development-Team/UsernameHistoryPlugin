@@ -8,12 +8,14 @@ public class PlayerQuitControllerImpl implements PlayerQuitController {
 
     @Override
     public PlayerQuitResultDto playerQuit(PlayerQuitEventDto event) {
-        return new PlayerQuitResultDto(
+        PlayerQuitResultDto playerQuitResultDto = new PlayerQuitResultDto();
+        playerQuitResultDto.setMessage(
                 String.format("Username: %s, UUID: %s, Time: %ld",
-                        event.getUsername(),
-                        event.getUuid().toString(),
-                        event.getTime()
-                )
-        );
+                event.getUsername(),
+                event.getUuid().toString(),
+                event.getTime()
+        ));
+
+        return playerQuitResultDto;
     }
 }
