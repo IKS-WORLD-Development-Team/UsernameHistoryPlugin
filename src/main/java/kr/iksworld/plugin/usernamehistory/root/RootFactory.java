@@ -5,21 +5,26 @@ import org.bukkit.event.Listener;
 
 public class RootFactory {
 
-    private static CommandExecutor commandExecutor;
+    private static RootFactory instance = new RootFactory();
 
-    private static Listener listener;
+    private CommandExecutor commandExecutor;
 
-    static {
+    private Listener listener;
+
+    private RootFactory() {
         commandExecutor = new RootCommandExecutor();
         listener = new RootListener();
     }
 
+    public static RootFactory getInstance() {
+        return instance;
+    }
 
-    public static CommandExecutor commandExecutor() {
+    public CommandExecutor commandExecutor() {
         return commandExecutor;
     }
 
-    public static Listener listener() {
+    public Listener listener() {
         return listener;
     }
 }
