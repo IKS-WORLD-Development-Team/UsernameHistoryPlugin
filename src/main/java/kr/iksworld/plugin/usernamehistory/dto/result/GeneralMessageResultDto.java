@@ -1,28 +1,23 @@
 package kr.iksworld.plugin.usernamehistory.dto.result;
 
+import java.util.Optional;
+
 public class GeneralMessageResultDto extends ResultDto {
-    private String message = "";
-    private boolean isContainMessage = false;
+    private Optional<String> message = Optional.ofNullable(null);
 
     public GeneralMessageResultDto() {
 
     }
 
     public void setMessage(String message) {
-        this.message = message;
-        this.isContainMessage = true;
+        this.message = Optional.ofNullable(message);
     }
 
     public void deleteMessage() {
-        this.message = "";
-        this.isContainMessage = false;
+        this.message = Optional.ofNullable(null);
     }
 
-    public boolean isContainMessage() {
-        return isContainMessage;
-    }
-
-    public String getMessage() {
+    public Optional<String> getMessage() {
         return message;
     }
 }
