@@ -14,22 +14,20 @@ public class RootListener implements Listener {
 
     @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
-        PlayerJoinEventDto playerJoinEventDto = new PlayerJoinEventDto(
-                event.getPlayer().getName(),
-                event.getPlayer().getUniqueId(),
-                System.currentTimeMillis()
-        );
+        PlayerJoinEventDto playerJoinEventDto = new PlayerJoinEventDto();
+        playerJoinEventDto.setUsername(event.getPlayer().getName());
+        playerJoinEventDto.setUuid(event.getPlayer().getUniqueId());
+        playerJoinEventDto.setTime(System.currentTimeMillis());
 
         PlayerJoinResultDto resultDto = ControllerFactory.getInstance().playerJoinController().playerJoin(playerJoinEventDto);
     }
 
     @EventHandler
     public void onPlayerQuitEvent(PlayerQuitEvent event) {
-        PlayerQuitEventDto playerQuitEventDto = new PlayerQuitEventDto(
-                event.getPlayer().getName(),
-                event.getPlayer().getUniqueId(),
-                System.currentTimeMillis()
-        );
+        PlayerQuitEventDto playerQuitEventDto = new PlayerQuitEventDto();
+        playerQuitEventDto.setUsername(event.getPlayer().getName());
+        playerQuitEventDto.setUuid(event.getPlayer().getUniqueId());
+        playerQuitEventDto.setTime(System.currentTimeMillis());
 
         PlayerQuitResultDto resultDto = ControllerFactory.getInstance().playerQuitController().playerQuit(playerQuitEventDto);
     }

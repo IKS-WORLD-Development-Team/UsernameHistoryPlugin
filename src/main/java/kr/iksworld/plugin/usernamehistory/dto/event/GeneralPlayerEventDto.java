@@ -7,10 +7,15 @@ public class GeneralPlayerEventDto {
     private UUID uuid;
     private long time;
 
-
-    public GeneralPlayerEventDto(String username, UUID uuid, long time) {
+    public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setUuid(UUID uuid) {
         this.uuid = uuid;
+    }
+
+    public void setTime(long time) {
         this.time = time;
     }
 
