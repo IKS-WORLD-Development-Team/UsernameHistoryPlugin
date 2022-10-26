@@ -9,6 +9,7 @@ public class UsernameHistoryPlugin extends JavaPlugin {
         getCommand("usernamehistory").setExecutor(RootFactory.getInstance().commandExecutor());
         getCommand("unh").setExecutor(RootFactory.getInstance().commandExecutor());
         getServer().getPluginManager().registerEvents(RootFactory.getInstance().listener(), this);
+
     }
 
     @Override
