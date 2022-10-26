@@ -1,4 +1,4 @@
 package kr.iksworld.plugin.usernamehistory.dto.event;
 
-public class UuidHistoryRequestEventDto {
+public class UuidHistoryEventDto {
 }

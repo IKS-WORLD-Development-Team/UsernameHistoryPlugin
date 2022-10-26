@@ -1,16 +1,15 @@
-package kr.iksworld.plugin.usernamehistory.root;
+package kr.iksworld.plugin.usernamehistory.controller.bukkit;
 
+import kr.iksworld.plugin.usernamehistory.controller.PlayerController;
 import kr.iksworld.plugin.usernamehistory.dto.event.PlayerJoinEventDto;
 import kr.iksworld.plugin.usernamehistory.dto.event.PlayerQuitEventDto;
-import kr.iksworld.plugin.usernamehistory.dto.result.PlayerJoinResultDto;
-import kr.iksworld.plugin.usernamehistory.dto.result.PlayerQuitResultDto;
-import kr.iksworld.plugin.usernamehistory.controller.ControllerFactory;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class RootListener implements Listener {
+    private PlayerController playerController = new PlayerController();
 
     @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
@@ -19,7 +18,7 @@ public class RootListener implements Listener {
         playerJoinEventDto.setUuid(event.getPlayer().getUniqueId());
         playerJoinEventDto.setTime(System.currentTimeMillis());
 
-        PlayerJoinResultDto resultDto = ControllerFactory.getInstance().playerJoinController().playerJoin(playerJoinEventDto);
+        playerController.playerJoin(playerJoinEventDto);
     }
 
     @EventHandler
@@ -29,6 +28,6 @@ public class RootListener implements Listener {
         playerQuitEventDto.setUuid(event.getPlayer().getUniqueId());
         playerQuitEventDto.setTime(System.currentTimeMillis());
 
-        PlayerQuitResultDto resultDto = ControllerFactory.getInstance().playerQuitController().playerQuit(playerQuitEventDto);
+        playerController.playerQuit(playerQuitEventDto);
     }
 }

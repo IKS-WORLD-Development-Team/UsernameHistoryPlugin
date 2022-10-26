@@ -1,4 +1,4 @@
-package kr.iksworld.plugin.usernamehistory.root;
+package kr.iksworld.plugin.usernamehistory.controller.bukkit;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

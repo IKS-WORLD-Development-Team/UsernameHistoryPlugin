@@ -1,7 +1,7 @@
 package kr.iksworld.plugin.usernamehistory;
 
-import kr.iksworld.plugin.usernamehistory.root.RootCommandExecutor;
-import kr.iksworld.plugin.usernamehistory.root.RootListener;
+import kr.iksworld.plugin.usernamehistory.controller.bukkit.RootCommandExecutor;
+import kr.iksworld.plugin.usernamehistory.controller.bukkit.RootListener;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
