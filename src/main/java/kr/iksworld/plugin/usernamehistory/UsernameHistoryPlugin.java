@@ -1,14 +1,20 @@
 package kr.iksworld.plugin.usernamehistory;
 
-import kr.iksworld.plugin.usernamehistory.root.RootFactory;
+import kr.iksworld.plugin.usernamehistory.root.RootCommandExecutor;
+import kr.iksworld.plugin.usernamehistory.root.RootListener;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class UsernameHistoryPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
-        getCommand("usernamehistory").setExecutor(RootFactory.getInstance().commandExecutor());
-        getCommand("unh").setExecutor(RootFactory.getInstance().commandExecutor());
-        getServer().getPluginManager().registerEvents(RootFactory.getInstance().listener(), this);
+        CommandExecutor commandExecutor = new RootCommandExecutor();
+        Listener listener = new RootListener();
+
+        getCommand("usernamehistory").setExecutor(commandExecutor);
+        getCommand("unh").setExecutor(commandExecutor);
+        getServer().getPluginManager().registerEvents(listener, this);
 
     }
 
