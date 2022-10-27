@@ -9,11 +9,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class UsernameHistoryPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
+
+        // CommandExecutor
         CommandExecutor usernameHistoryController = new UsernameHistoryController();
-        Listener playerController = new PlayerController();
 
         getCommand("usernamehistory").setExecutor(usernameHistoryController);
         getCommand("unh").setExecutor(usernameHistoryController);
+
+
+        // Listener
+        Listener playerController = new PlayerController();
+
         getServer().getPluginManager().registerEvents(playerController, this);
 
     }
