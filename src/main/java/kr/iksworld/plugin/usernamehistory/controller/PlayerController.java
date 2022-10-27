@@ -1,24 +1,18 @@
 package kr.iksworld.plugin.usernamehistory.controller;
 
-import kr.iksworld.plugin.usernamehistory.dto.event.PlayerJoinEventDto;
-import kr.iksworld.plugin.usernamehistory.dto.event.PlayerQuitEventDto;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
-public class PlayerController {
-    public void playerJoin(PlayerJoinEventDto event) {
+public class PlayerController implements Listener {
 
-                String.format("Username: %s, UUID: %s, Time: %ld",
-                        event.getUsername(),
-                        event.getUuid().toString(),
-                        event.getTime()
-                );
+    @EventHandler
+    public void playerJoin(PlayerJoinEvent event) {
     }
 
-    public void playerQuit(PlayerQuitEventDto event) {
+    @EventHandler
+    public void playerQuit(PlayerQuitEvent event) {
 
-                String.format("Username: %s, UUID: %s, Time: %ld",
-                        event.getUsername(),
-                        event.getUuid().toString(),
-                        event.getTime()
-                );
     }
 }

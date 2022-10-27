@@ -1,7 +1,7 @@
 package kr.iksworld.plugin.usernamehistory;
 
-import kr.iksworld.plugin.usernamehistory.controller.bukkit.RootCommandExecutor;
-import kr.iksworld.plugin.usernamehistory.controller.bukkit.RootListener;
+import kr.iksworld.plugin.usernamehistory.controller.PlayerController;
+import kr.iksworld.plugin.usernamehistory.controller.UsernameHistoryController;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -9,12 +9,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class UsernameHistoryPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
-        CommandExecutor commandExecutor = new RootCommandExecutor();
-        Listener listener = new RootListener();
+        CommandExecutor usernameHistoryController = new UsernameHistoryController();
+        Listener playerController = new PlayerController();
 
-        getCommand("usernamehistory").setExecutor(commandExecutor);
-        getCommand("unh").setExecutor(commandExecutor);
-        getServer().getPluginManager().registerEvents(listener, this);
+        getCommand("usernamehistory").setExecutor(usernameHistoryController);
+        getCommand("unh").setExecutor(usernameHistoryController);
+        getServer().getPluginManager().registerEvents(playerController, this);
 
     }
 
