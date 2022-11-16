@@ -1,9 +1,14 @@
 package kr.iksworld.plugin.usernamehistory.controller;
 
+import kr.iksworld.plugin.usernamehistory.dto.History;
+import kr.iksworld.plugin.usernamehistory.service.ServiceFactory;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+
+import java.util.UUID;
 
 /**
  * 플레이어의 입퇴장을 Action으로 받는 Controller입니다.
@@ -15,7 +20,9 @@ public class PlayerController implements Listener {
      */
     @EventHandler
     public void playerJoin(PlayerJoinEvent event) {
-
+        Player player = event.getPlayer();
+        History<String, UUID> history = new History(player.getName(), player.getUniqueId());
+        boolean isCreated = ServiceFactory.usernameHistoryService().create(history);
     }
 
     /**
@@ -23,6 +30,8 @@ public class PlayerController implements Listener {
      */
     @EventHandler
     public void playerQuit(PlayerQuitEvent event) {
-
+        Player player = event.getPlayer();
+        History<String, UUID> history = new History(player.getName(), player.getUniqueId());
+        boolean isCreated = ServiceFactory.usernameHistoryService().create(history);
     }
 }

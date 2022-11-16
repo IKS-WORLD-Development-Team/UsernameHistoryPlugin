@@ -3,27 +3,28 @@ package kr.iksworld.plugin.usernamehistory.service;
 import kr.iksworld.plugin.usernamehistory.dto.History;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface HistoryService<T, K> {
+public interface HistoryService<K, V> {
 
     // CREATE
 
-    boolean create(History<T, K> history);
+    boolean create(History<K, V> history);
 
     // UPDATE
 
-    boolean update(History<T, K> history, long id);
+    boolean update(History<K, V> history, long id);
 
     // GET
 
-    History<T, K> get(T key, long id);
+    Optional<History<K, V>> get(K key, long id);
 
-    List<History<T, K>> searchByKey(T key);
+    Optional<List<History<K, V>>> searchByKey(K key);
 
-    List<History<T, K>> searchByValue(K value);
+    Optional<List<History<K, V>>> searchByValue(V value);
 
     // DELETE
 
-    boolean delete(T key, long id);
+    boolean delete(K key, long id);
 
 }
