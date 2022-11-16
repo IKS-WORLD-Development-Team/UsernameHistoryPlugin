@@ -15,7 +15,7 @@ public interface HistoryService<K, V> {
 
     boolean update(History<K, V> history, long id);
 
-    // GET
+    // READ
 
     Optional<History<K, V>> get(K key, long id);
 
