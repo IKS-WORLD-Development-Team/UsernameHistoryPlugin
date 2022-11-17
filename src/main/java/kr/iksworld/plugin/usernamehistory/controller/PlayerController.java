@@ -1,6 +1,7 @@
 package kr.iksworld.plugin.usernamehistory.controller;
 
 import kr.iksworld.plugin.usernamehistory.dto.History;
+import kr.iksworld.plugin.usernamehistory.dto.HistoryType;
 import kr.iksworld.plugin.usernamehistory.service.ServiceFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,8 +22,8 @@ public class PlayerController implements Listener {
     @EventHandler
     public void playerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        History<String, UUID> history = new History(player.getName(), player.getUniqueId());
-        boolean isCreated = ServiceFactory.usernameHistoryService().create(history);
+        History<String, UUID> history = new History(player.getName(), player.getUniqueId(), HistoryType.JOIN);
+        boolean isCreated = ServiceFactory.usernameHistoryService().update(history);
     }
 
     /**
@@ -31,7 +32,7 @@ public class PlayerController implements Listener {
     @EventHandler
     public void playerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        History<String, UUID> history = new History(player.getName(), player.getUniqueId());
-        boolean isCreated = ServiceFactory.usernameHistoryService().create(history);
+        History<String, UUID> history = new History(player.getName(), player.getUniqueId(), HistoryType.QUIT);
+        boolean isCreated = ServiceFactory.usernameHistoryService().update(history);
     }
 }

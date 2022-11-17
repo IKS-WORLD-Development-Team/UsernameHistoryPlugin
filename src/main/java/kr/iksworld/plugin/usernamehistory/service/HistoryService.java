@@ -7,17 +7,11 @@ import java.util.Optional;
 
 public interface HistoryService<K, V> {
 
-    // CREATE
-
-    boolean create(History<K, V> history);
-
     // UPDATE
 
-    boolean update(History<K, V> history, long id);
+    boolean update(History<K, V> history);
 
     // READ
-
-    Optional<History<K, V>> get(K key, long id);
 
     Optional<History<K, V>> getByKey(K key, long id);
 
@@ -27,8 +21,5 @@ public interface HistoryService<K, V> {
 
     Optional<List<History<K, V>>> searchByValue(String valueQuery);
 
-    // DELETE
-
-    boolean delete(K key, long id);
 
 }

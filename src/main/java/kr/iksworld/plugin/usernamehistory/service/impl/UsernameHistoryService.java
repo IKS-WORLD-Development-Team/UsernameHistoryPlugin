@@ -9,18 +9,8 @@ import java.util.Optional;
 public class UsernameHistoryService<K, V> implements HistoryService<K, V> {
 
     @Override
-    public boolean create(History history) {
+    public boolean update(History history) {
         return false;
-    }
-
-    @Override
-    public boolean update(History history, long id) {
-        return false;
-    }
-
-    @Override
-    public Optional<History<K, V>> get(K key, long id) {
-        return null;
     }
 
     @Override
@@ -41,10 +31,5 @@ public class UsernameHistoryService<K, V> implements HistoryService<K, V> {
     @Override
     public Optional<List<History<K, V>>> searchByValue(String valueQuery) {
         return Optional.empty();
-    }
-
-    @Override
-    public boolean delete(K key, long id) {
-        return false;
     }
 }
