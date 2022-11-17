@@ -2,7 +2,7 @@ package kr.iksworld.plugin.usernamehistory.controller;
 
 import kr.iksworld.plugin.usernamehistory.dto.History;
 import kr.iksworld.plugin.usernamehistory.dto.HistoryType;
-import kr.iksworld.plugin.usernamehistory.service.ServiceFactory;
+import kr.iksworld.plugin.usernamehistory.service.factory.ServiceFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
