@@ -13,13 +13,13 @@ public interface HistoryService<K, V> {
 
     // READ
 
-    Optional<History<K, V>> getByKey(K key, long id);
+    List<History<K, V>> getByKey(K key);
 
-    Optional<History<K, V>> getByValue(V value, long id);
+    List<History<K, V>> getByValue(V value);
 
-    Optional<List<History<K, V>>> searchByKey(String keyQuery);
+    List<History<K, V>> searchByKey(String keyQuery);
 
-    Optional<List<History<K, V>>> searchByValue(String valueQuery);
+    List<History<K, V>> searchByValue(String valueQuery);
 
 
 }
