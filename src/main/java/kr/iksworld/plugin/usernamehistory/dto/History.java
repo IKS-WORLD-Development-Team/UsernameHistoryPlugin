@@ -3,17 +3,14 @@ package kr.iksworld.plugin.usernamehistory.dto;
 public class History<K, V> {
     private K key;
     private V value;
-    private long time;
+    private long startTime;
+    private long endTime;
 
-    public History(K key, V value) {
-        this(key, value, 0);
-        time = System.currentTimeMillis();
-    }
-
-    public History(K key, V value, long time) {
+    public History(K key, V value, long startTime, long endTime) {
         this.key = key;
         this.value = value;
-        this.time = time;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     public K getKey() {
@@ -24,8 +21,11 @@ public class History<K, V> {
         return value;
     }
 
-    public long getTimeMillis() {
-        return time;
+    public long getStartTime() {
+        return startTime;
     }
 
+    public long getEndTime() {
+        return endTime;
+    }
 }

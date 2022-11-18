@@ -7,8 +7,14 @@ import java.util.List;
 
 public class UsernameHistoryService<K, V> implements HistoryService<K, V> {
 
+
     @Override
-    public boolean update(History history) {
+    public boolean joinUpdate(K key, V value) {
+        return false;
+    }
+
+    @Override
+    public boolean quitUpdate(K key, V value) {
         return false;
     }
 

@@ -3,13 +3,14 @@ package kr.iksworld.plugin.usernamehistory.service;
 import kr.iksworld.plugin.usernamehistory.dto.History;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface HistoryService<K, V> {
 
     // UPDATE
 
-    boolean update(History<K, V> history);
+    boolean joinUpdate(K key, V value);
+
+    boolean quitUpdate(K key, V value);
 
     // READ
 
