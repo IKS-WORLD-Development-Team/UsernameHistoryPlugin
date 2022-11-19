@@ -1,7 +1,6 @@
-package kr.iksworld.plugin.usernamehistory.service.impl;
+package kr.iksworld.plugin.usernamehistory.service;
 
 import kr.iksworld.plugin.usernamehistory.dto.History;
-import kr.iksworld.plugin.usernamehistory.service.HistoryService;
 
 import java.util.List;
 

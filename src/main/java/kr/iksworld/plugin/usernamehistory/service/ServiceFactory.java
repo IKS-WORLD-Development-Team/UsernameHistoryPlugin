@@ -1,8 +1,4 @@
-package kr.iksworld.plugin.usernamehistory.service.factory;
-
-
-import kr.iksworld.plugin.usernamehistory.service.HistoryService;
-import kr.iksworld.plugin.usernamehistory.service.impl.UsernameHistoryService;
+package kr.iksworld.plugin.usernamehistory.service;
 
 import java.util.UUID;
 
