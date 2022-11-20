@@ -5,6 +5,12 @@ import kr.iksworld.plugin.usernamehistory.dto.History;
 
 import java.util.List;
 
+/**
+ * History 관련 요청을 처리하는 Service.
+ * (A service to process request about History.)
+ * @param <K> 유저 식별자 (user identifier)
+ * @param <V> 유저 별명 (user nickname)
+ */
 public class UsernameHistoryService<K, V> implements HistoryService<K, V> {
 
     private HistoryDao<K, V> historyDao;

@@ -12,6 +12,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.UUID;
 
+/**
+ * JavaPlugin을 상속하는 메인 클래스
+ * (Main class extending JavaPlugin)
+ */
 public class UsernameHistoryPlugin extends JavaPlugin {
 
     @Override
