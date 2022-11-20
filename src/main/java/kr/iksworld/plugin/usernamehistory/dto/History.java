@@ -1,5 +1,11 @@
 package kr.iksworld.plugin.usernamehistory.dto;
 
+/**
+ * 이 DTO는 유저 식별자, 유저 별명, 사용 기간 정보를 포합하고 있습니다.
+ * (This DTO contains information of user identifier, user nickname, and period of use.)
+ * @param <K> 유저 식별자 (user identifier)
+ * @param <V> 유저 별명 (user nickname)
+ */
 public class History<K, V> {
     private K key;
     private V value;

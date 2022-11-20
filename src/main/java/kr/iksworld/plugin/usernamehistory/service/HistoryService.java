@@ -4,6 +4,12 @@ import kr.iksworld.plugin.usernamehistory.dto.History;
 
 import java.util.List;
 
+/**
+ * HistoryService 인터페이스.
+ * (A interface of HistoryService.)
+ * @param <K> 유저 식별자 (user identifier)
+ * @param <V> 유저 별명 (user nickname)
+ */
 public interface HistoryService<K, V> {
 
     // UPDATE
