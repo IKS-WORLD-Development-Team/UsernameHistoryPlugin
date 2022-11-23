@@ -20,4 +20,14 @@ public class YmlHistoryDao<K, V> implements HistoryDao<K, V> {
     public List<History<K, V>> get(HistorySearchCondition historySearchCondition) {
         return null;
     }
+
+    @Override
+    public boolean update(History<K, V> history) {
+        return false;
+    }
+
+    @Override
+    public boolean delete(K key, long startTime) {
+        return false;
+    }
 }

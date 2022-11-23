@@ -13,10 +13,14 @@ import java.util.List;
 public interface HistoryDao<K, V> {
 
     // Create
-
     boolean create(History<K, V> history);
 
     // Read
-
     List<History<K, V>> get(HistorySearchCondition historySearchCondition);
+
+    // Update
+    boolean update(History<K, V> history);
+
+    // Delete
+    boolean delete(K key, long startTime);
 }
