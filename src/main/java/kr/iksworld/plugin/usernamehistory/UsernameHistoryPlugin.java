@@ -33,7 +33,7 @@ public class UsernameHistoryPlugin extends JavaPlugin {
         // Setup
         HistoryDao<UUID, String> usernameHistoryDao = new YmlHistoryDao();
         HistoryService<UUID, String> usernameHistoryService = new UsernameHistoryService<>(usernameHistoryDao);
-        HistoryUpdateService<UUID, String> usernameHistoryUpdateService = new UsernameHistoryUpdateService<>();
+        HistoryUpdateService<UUID, String> usernameHistoryUpdateService = new UsernameHistoryUpdateService<>(usernameHistoryDao);
 
         // CommandExecutor
         CommandExecutor usernameHistoryController = new UsernameHistoryController(usernameHistoryService);
