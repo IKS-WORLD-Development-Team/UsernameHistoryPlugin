@@ -1,5 +1,6 @@
 package kr.iksworld.plugin.usernamehistory.controller;
 
+import kr.iksworld.plugin.usernamehistory.UsernameHistoryPlugin;
 import kr.iksworld.plugin.usernamehistory.service.HistoryService;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,11 +31,17 @@ public class PlayerController implements Listener {
     public void playerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         boolean isUpdated = usernameHistoryService.joinUpdate(player.getUniqueId(), player.getName());
+
+        // test
+        UsernameHistoryPlugin.getInstance().getLogger().info(player.getUniqueId() + " join");
     }
 
     @EventHandler
     public void playerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         boolean isUpdated = usernameHistoryService.quitUpdate(player.getUniqueId(), player.getName());
+
+        // test
+        UsernameHistoryPlugin.getInstance().getLogger().info(player.getUniqueId() + " quit");
     }
 }

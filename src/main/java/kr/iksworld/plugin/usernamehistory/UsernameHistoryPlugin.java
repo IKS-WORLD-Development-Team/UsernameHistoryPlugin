@@ -18,8 +18,15 @@ import java.util.UUID;
  */
 public class UsernameHistoryPlugin extends JavaPlugin {
 
+    private static UsernameHistoryPlugin instance;
+
+    public static UsernameHistoryPlugin getInstance() {
+        return instance;
+    }
+
     @Override
     public void onEnable() {
+        instance = this;
 
         // Setup
         HistoryDao<UUID, String> usernameHistoryDao = new YmlHistoryDao();

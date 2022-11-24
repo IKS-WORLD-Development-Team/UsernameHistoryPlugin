@@ -36,10 +36,10 @@ public class UsernameHistoryController implements CommandExecutor {
     }
 
     public void usernameHistory(CommandSender sender, Command command, String label, String[] args) {
-
+        sender.sendMessage("username ㅇ");
     }
 
     public void uuidHistory(CommandSender sender, Command command, String label, String[] args) {
-
+        sender.sendMessage("uuid ㅇ");
     }
 }
