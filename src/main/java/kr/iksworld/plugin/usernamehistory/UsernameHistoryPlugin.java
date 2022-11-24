@@ -5,7 +5,9 @@ import kr.iksworld.plugin.usernamehistory.controller.UsernameHistoryController;
 import kr.iksworld.plugin.usernamehistory.dao.HistoryDao;
 import kr.iksworld.plugin.usernamehistory.dao.YmlHistoryDao;
 import kr.iksworld.plugin.usernamehistory.service.HistoryService;
+import kr.iksworld.plugin.usernamehistory.service.HistoryUpdateService;
 import kr.iksworld.plugin.usernamehistory.service.UsernameHistoryService;
+import kr.iksworld.plugin.usernamehistory.service.UsernameHistoryUpdateService;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -31,6 +33,7 @@ public class UsernameHistoryPlugin extends JavaPlugin {
         // Setup
         HistoryDao<UUID, String> usernameHistoryDao = new YmlHistoryDao();
         HistoryService<UUID, String> usernameHistoryService = new UsernameHistoryService<>(usernameHistoryDao);
+        HistoryUpdateService<UUID, String> usernameHistoryUpdateService = new UsernameHistoryUpdateService<>();
 
         // CommandExecutor
         CommandExecutor usernameHistoryController = new UsernameHistoryController(usernameHistoryService);
@@ -38,7 +41,7 @@ public class UsernameHistoryPlugin extends JavaPlugin {
         getCommand("unh").setExecutor(usernameHistoryController);
 
         // Listener
-        Listener playerController = new PlayerController(usernameHistoryService);
+        Listener playerController = new PlayerController(usernameHistoryUpdateService);
         getServer().getPluginManager().registerEvents(playerController, this);
 
     }

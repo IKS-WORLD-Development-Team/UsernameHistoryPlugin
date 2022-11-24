@@ -2,6 +2,7 @@ package kr.iksworld.plugin.usernamehistory.controller;
 
 import kr.iksworld.plugin.usernamehistory.UsernameHistoryPlugin;
 import kr.iksworld.plugin.usernamehistory.service.HistoryService;
+import kr.iksworld.plugin.usernamehistory.service.HistoryUpdateService;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,10 +20,10 @@ public class PlayerController implements Listener {
 
     // DI
 
-    private HistoryService usernameHistoryService;
+    private HistoryUpdateService usernameHistoryUpdateService;
 
-    public PlayerController(HistoryService historyService) {
-        usernameHistoryService = historyService;
+    public PlayerController(HistoryUpdateService historyUpdateService) {
+        usernameHistoryUpdateService = historyUpdateService;
     }
 
     // Handle
@@ -30,7 +31,7 @@ public class PlayerController implements Listener {
     @EventHandler
     public void playerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        boolean isUpdated = usernameHistoryService.joinUpdate(player.getUniqueId(), player.getName());
+        boolean isUpdated = usernameHistoryUpdateService.joinUpdate(player.getUniqueId(), player.getName());
 
         // test
         UsernameHistoryPlugin.getInstance().getLogger().info(player.getUniqueId() + " join");
@@ -39,7 +40,7 @@ public class PlayerController implements Listener {
     @EventHandler
     public void playerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        boolean isUpdated = usernameHistoryService.quitUpdate(player.getUniqueId(), player.getName());
+        boolean isUpdated = usernameHistoryUpdateService.quitUpdate(player.getUniqueId(), player.getName());
 
         // test
         UsernameHistoryPlugin.getInstance().getLogger().info(player.getUniqueId() + " quit");
