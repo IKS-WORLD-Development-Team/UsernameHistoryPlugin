@@ -1,3 +1,12 @@
 name: UsernameHistoryPlugin
 main: kr.iksworld.plugin.usernamehistory.UsernameHistoryPlugin
 version: 1.0
+commands:
+  usernamehistory:
+    description: Print username history
+    usage: /usernamehistory
+    permission: usernamehistory.uu
+  unh:
+    description: Print username history
+    usage: /usernamehistory
+    permission: usernamehistory.uu
