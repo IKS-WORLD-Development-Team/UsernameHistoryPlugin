@@ -3,6 +3,7 @@ package kr.iksworld.plugin.usernamehistory.controller;
 import kr.iksworld.plugin.usernamehistory.UsernameHistoryPlugin;
 import kr.iksworld.plugin.usernamehistory.service.HistoryService;
 import kr.iksworld.plugin.usernamehistory.service.HistoryUpdateService;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -34,7 +35,7 @@ public class PlayerController implements Listener {
         boolean isUpdated = usernameHistoryUpdateService.joinUpdate(player.getUniqueId(), player.getName());
 
         // test
-        UsernameHistoryPlugin.getInstance().getLogger().info(player.getUniqueId() + " join");
+        Bukkit.getLogger().info(player.getUniqueId() + " join");
     }
 
     @EventHandler
@@ -43,6 +44,6 @@ public class PlayerController implements Listener {
         boolean isUpdated = usernameHistoryUpdateService.quitUpdate(player.getUniqueId(), player.getName());
 
         // test
-        UsernameHistoryPlugin.getInstance().getLogger().info(player.getUniqueId() + " quit");
+        Bukkit.getLogger().info(player.getUniqueId() + " quit");
     }
 }
