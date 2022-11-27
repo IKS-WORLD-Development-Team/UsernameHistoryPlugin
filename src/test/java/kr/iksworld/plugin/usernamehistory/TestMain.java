@@ -1,4 +1,5 @@
 package kr.iksworld.plugin.usernamehistory;
 
-public class d {
+public class TestMain {
+
 }
