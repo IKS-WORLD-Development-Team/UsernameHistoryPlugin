@@ -1,6 +1,7 @@
 package kr.iksworld.plugin.usernamehistory.dto;
 
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Optional;
 
 /**
@@ -13,23 +14,15 @@ import java.util.Optional;
 public class HistorySearchCondition<K, V> {
 
     // Initial Value
-
-    private final static ElementNumberType INITIAL_ELEMENT_NUMBER_TYPE = ElementNumberType.ALL;
-    private final static SortType INITIAL_SORT_TYPE = SortType.ASCENDING_ORDER;
-    private final static SortBy INITIAL_SORT_BY = SortBy.START_TIME;
     private final static long INITIAL_TIME_CONDITION = -1;
 
-
-    // Field
-
+    // Variable
     private ElementNumberType elementNumberType;
     private SortType sortType;
     private SortBy sortBy;
 
-    private K keyEqualCondition;
-    private V valueEqualCondition;
-    private String keyContainCondition;
-    private String valueContainCondition;
+    private SearcherData<K> keyData;
+    private SearcherData<V> valueData;
 
     private long startTimeMinCondition;
     private long startTimeMaxCondition;
@@ -37,15 +30,13 @@ public class HistorySearchCondition<K, V> {
     private long endTimeMaxCondition;
 
 
-    public HistorySearchCondition() {
-        elementNumberType = INITIAL_ELEMENT_NUMBER_TYPE;
-        sortType = INITIAL_SORT_TYPE;
-        sortBy = INITIAL_SORT_BY;
+    public HistorySearchCondition(ElementNumberType elementNumberType, SortType sortType, SortBy sortBy) {
+        this.elementNumberType = elementNumberType;
+        this.sortType = sortType;
+        this.sortBy = sortBy;
 
-        keyEqualCondition = null;
-        valueEqualCondition = null;
-        keyContainCondition = null;
-        valueContainCondition = null;
+        keyData = new SearcherData<>();
+        valueData = new SearcherData<>();
 
         startTimeMinCondition = INITIAL_TIME_CONDITION;
         startTimeMaxCondition = INITIAL_TIME_CONDITION;
@@ -68,20 +59,12 @@ public class HistorySearchCondition<K, V> {
         return sortBy;
     }
 
-    public Optional<K> getKeyEqualCondition() {
-        return Optional.of(keyEqualCondition);
+    public Optional<Object> getKeyData() {
+        return keyData.get();
     }
 
-    public Optional<V> getValueEqualCondition() {
-        return Optional.of(valueEqualCondition);
-    }
-
-    public Optional<String> getKeyContainCondition() {
-        return Optional.of(keyContainCondition);
-    }
-
-    public Optional<String> getValueContainCondition() {
-        return Optional.of(valueContainCondition);
+    public Optional<Object> getValueData() {
+        return valueData.get();
     }
 
     public Optional<Long> getStartTimeMinCondition() {
@@ -117,35 +100,72 @@ public class HistorySearchCondition<K, V> {
     }
 
 
-    // Setter
+    // Setting Setter
 
-    public void setElementNumberType(@Nonnull ElementNumberType elementNumberType) {
+    public void setElementNumberType(@NotNull ElementNumberType elementNumberType) {
         this.elementNumberType = elementNumberType;
     }
 
-    public void setSortType(@Nonnull SortType sortType) {
+    public void setSortType(@NotNull SortType sortType) {
         this.sortType = sortType;
     }
 
-    public void setSortBy(@Nonnull SortBy sortBy) {
+    public void setSortBy(@NotNull SortBy sortBy) {
         this.sortBy = sortBy;
     }
 
-    public void setKeyEqualCondition(K keyEqualCondition) {
-        this.keyEqualCondition = keyEqualCondition;
+
+    // Searcher Setter
+
+    public void setKey(K key, boolean isEqual) {
+        setSearcherData(keyData, key, isEqual);
     }
 
-    public void setValueEqualCondition(V valueEqualCondition) {
-        this.valueEqualCondition = valueEqualCondition;
+    public void setKey(String key, boolean isEqual) {
+        setSearcherData(keyData, key, isEqual);
     }
 
-    public void setKeyContainCondition(String keyContainCondition) {
-        this.keyContainCondition = keyContainCondition;
+    public void setKeyNull() {
+        setSearcherDataNull(keyData);
     }
 
-    public void setValueContainCondition(String valueContainCondition) {
-        this.valueContainCondition = valueContainCondition;
+    public void setValue(V value, boolean isEqual) {
+        setSearcherData(valueData, value, isEqual);
     }
+
+    public void setValue(String value, boolean isEqual) {
+        setSearcherData(valueData, value, isEqual);
+    }
+
+    public void setValueNull() {
+        setSearcherDataNull(keyData);
+    }
+
+
+    // Searcher Setter Inner Logic
+
+    private <X> void setSearcherData(SearcherData<X> data, X value, boolean b) {
+        data.setRawData(value);
+        data.setConditionType(transferConditionType(b));
+    }
+
+    private <X> void setSearcherData(SearcherData<X> data, String value, boolean b) {
+        data.setStringData(value);
+        data.setConditionType(transferConditionType(b));
+    }
+
+    private <X> void setSearcherDataNull(SearcherData<X> data) {
+        data.setStringData(null);
+    }
+
+    private SearcherData.ConditionType transferConditionType(boolean b) {
+        if (b) {
+            return SearcherData.ConditionType.EQUAL;
+        } else {
+            return SearcherData.ConditionType.CONTAIN;
+        }
+    }
+
 
     public void setStartTimeMinCondition(long startTimeMinCondition) {
         this.startTimeMinCondition = startTimeMinCondition;
@@ -161,53 +181,6 @@ public class HistorySearchCondition<K, V> {
 
     public void setEndTimeMaxCondition(long endTimeMaxCondition) {
         this.endTimeMaxCondition = endTimeMaxCondition;
-    }
-
-
-    // Reset
-
-    public void resetElementNumberType() {
-        setElementNumberType(INITIAL_ELEMENT_NUMBER_TYPE);
-    }
-
-    public void resetSortType() {
-        setSortType(INITIAL_SORT_TYPE);
-    }
-
-    public void resetSortBy() {
-        setSortBy(INITIAL_SORT_BY);
-    }
-
-    public void resetKeyEqualCondition() {
-        setKeyEqualCondition(null);
-    }
-
-    public void resetValueEqualCondition() {
-        setValueEqualCondition(null);
-    }
-
-    public void resetKeyContainCondition() {
-        setKeyContainCondition(null);
-    }
-
-    public void resetValueContainCondition() {
-        setValueContainCondition(null);
-    }
-
-    public void resetStartTimeMinCondition() {
-        setStartTimeMinCondition(-1);
-    }
-
-    public void resetStartTimeMaxCondition() {
-        setStartTimeMaxCondition(-1);
-    }
-
-    public void resetEndTimeMinCondition() {
-        setEndTimeMinCondition(-1);
-    }
-
-    public void resetEndTimeMaxCondition() {
-        setEndTimeMaxCondition(-1);
     }
 
 
