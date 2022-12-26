@@ -220,15 +220,15 @@ public class HistorySearchCondition<K, V> {
 
     // Inner Enum
 
-    enum ElementNumberType {
+    public enum ElementNumberType {
         ALL, ONLY_FIRST;
     }
 
-    enum SortType {
+    public enum SortType {
         ASCENDING_ORDER, DESCENDING_ORDER;
     }
 
-    enum SortBy {
+    public enum SortBy {
         KEY, VALUE, START_TIME, END_TIME;
     }
 }

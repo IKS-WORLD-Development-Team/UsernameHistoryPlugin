@@ -66,11 +66,11 @@ public class SearcherData<T> {
     }
 
 
-    enum SearcherDataType {
+    public enum SearcherDataType {
         RAW, STRING, NULL;
     }
 
-    enum ConditionType {
+    public enum ConditionType {
         EQUAL, CONTAIN, NOT_YET;
     }
 

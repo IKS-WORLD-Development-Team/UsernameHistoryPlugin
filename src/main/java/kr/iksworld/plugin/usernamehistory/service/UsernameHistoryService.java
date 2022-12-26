@@ -2,6 +2,7 @@ package kr.iksworld.plugin.usernamehistory.service;
 
 import kr.iksworld.plugin.usernamehistory.dao.HistoryDao;
 import kr.iksworld.plugin.usernamehistory.dto.History;
+import kr.iksworld.plugin.usernamehistory.dto.HistorySearchCondition;
 
 import java.util.List;
 
@@ -21,6 +22,18 @@ public class UsernameHistoryService<K, V> implements HistoryService<K, V> {
 
     @Override
     public boolean joinUpdate(K key, V value) {
+        HistorySearchCondition<K, V> condition = new HistorySearchCondition<>(
+                HistorySearchCondition.ElementNumberType.ONLY_FIRST,
+                HistorySearchCondition.SortType.DESCENDING_ORDER,
+                HistorySearchCondition.SortBy.START_TIME
+        );
+        condition.setKey(key, true);
+        List<History<K, V>> list = historyDao.get(condition);
+        if (list == null) {
+            return false;
+        } else if (list.size() == 0) {
+
+        }
         return false;
     }
 
