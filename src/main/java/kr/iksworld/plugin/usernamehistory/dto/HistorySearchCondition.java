@@ -45,7 +45,7 @@ public class HistorySearchCondition<K, V> {
     }
 
 
-    // Getter
+    // Setting Getter
 
     public ElementNumberType getElementNumberType() {
         return elementNumberType;
@@ -59,12 +59,36 @@ public class HistorySearchCondition<K, V> {
         return sortBy;
     }
 
-    public Optional<Object> getKeyData() {
+
+    // Searcher Getter
+
+    public Optional<Object> getKey() {
         return keyData.get();
     }
 
-    public Optional<Object> getValueData() {
+    public boolean getKeyConditionType() {
+        return transferConditionType(keyData.getConditionType());
+    }
+
+    public Optional<Object> getValue() {
         return valueData.get();
+    }
+
+    public boolean getValueConditionType() {
+        return transferConditionType(valueData.getConditionType());
+    }
+
+    // Searcher Getter Logic
+    private boolean transferConditionType(SearcherData.ConditionType conditionType) {
+        switch (conditionType) {
+            case EQUAL, NOT_YET -> {
+                return true;
+            }
+            case CONTAIN -> {
+                return false;
+            }
+        }
+        return false;
     }
 
     public Optional<Long> getStartTimeMinCondition() {
@@ -117,11 +141,11 @@ public class HistorySearchCondition<K, V> {
 
     // Searcher Setter
 
-    public void setKey(K key, boolean isEqual) {
+    public void setKey(K key, @NotNull boolean isEqual) {
         setSearcherData(keyData, key, isEqual);
     }
 
-    public void setKey(String key, boolean isEqual) {
+    public void setKey(String key, @NotNull boolean isEqual) {
         setSearcherData(keyData, key, isEqual);
     }
 
@@ -129,11 +153,11 @@ public class HistorySearchCondition<K, V> {
         setSearcherDataNull(keyData);
     }
 
-    public void setValue(V value, boolean isEqual) {
+    public void setValue(V value, @NotNull boolean isEqual) {
         setSearcherData(valueData, value, isEqual);
     }
 
-    public void setValue(String value, boolean isEqual) {
+    public void setValue(String value, @NotNull boolean isEqual) {
         setSearcherData(valueData, value, isEqual);
     }
 
@@ -141,24 +165,22 @@ public class HistorySearchCondition<K, V> {
         setSearcherDataNull(keyData);
     }
 
-
-    // Searcher Setter Inner Logic
-
+    // Searcher Setter Logic
     private <X> void setSearcherData(SearcherData<X> data, X value, boolean b) {
         data.setRawData(value);
-        data.setConditionType(transferConditionType(b));
+        data.setConditionType(transferBoolean(b));
     }
 
     private <X> void setSearcherData(SearcherData<X> data, String value, boolean b) {
         data.setStringData(value);
-        data.setConditionType(transferConditionType(b));
+        data.setConditionType(transferBoolean(b));
     }
 
     private <X> void setSearcherDataNull(SearcherData<X> data) {
         data.setStringData(null);
     }
 
-    private SearcherData.ConditionType transferConditionType(boolean b) {
+    private SearcherData.ConditionType transferBoolean(boolean b) {
         if (b) {
             return SearcherData.ConditionType.EQUAL;
         } else {
