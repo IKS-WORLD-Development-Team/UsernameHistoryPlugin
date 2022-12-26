@@ -13,9 +13,6 @@ import java.util.Optional;
 
 public class HistorySearchCondition<K, V> {
 
-    // Initial Value
-    private final static long INITIAL_TIME_CONDITION = -1;
-
     // Variable
     private ElementNumberType elementNumberType;
     private SortType sortType;
@@ -26,11 +23,6 @@ public class HistorySearchCondition<K, V> {
 
     private TimeSearcherData startTime;
     private TimeSearcherData endTime;
-
-    private long startTimeMinCondition;
-    private long startTimeMaxCondition;
-    private long endTimeMinCondition;
-    private long endTimeMaxCondition;
 
 
     public HistorySearchCondition(ElementNumberType elementNumberType, SortType sortType, SortBy sortBy) {
@@ -43,11 +35,6 @@ public class HistorySearchCondition<K, V> {
 
         startTime = new TimeSearcherData();
         endTime = new TimeSearcherData();
-
-        startTimeMinCondition = INITIAL_TIME_CONDITION;
-        startTimeMaxCondition = INITIAL_TIME_CONDITION;
-        endTimeMinCondition = INITIAL_TIME_CONDITION;
-        endTimeMaxCondition = INITIAL_TIME_CONDITION;
     }
 
 
