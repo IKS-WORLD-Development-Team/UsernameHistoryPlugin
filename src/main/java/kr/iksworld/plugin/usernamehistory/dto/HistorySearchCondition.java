@@ -91,6 +91,9 @@ public class HistorySearchCondition<K, V> {
         return false;
     }
 
+
+    // TimeSearcher Getter
+
     public Optional<Long> getStartTimeMinCondition() {
         if (startTimeMinCondition == -1) {
             return Optional.ofNullable(null);

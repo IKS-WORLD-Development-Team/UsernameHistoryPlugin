@@ -2,6 +2,10 @@ package kr.iksworld.plugin.usernamehistory.dto;
 
 import java.util.Optional;
 
+/**
+ * 이 DTO는 HistorySearchCondition에서 사용되며 외부에 노출되지 않습니다.
+ * @param <T> 저장하는 데이터의 타입
+ */
 public class SearcherData<T> {
 
     private T rawData = null;

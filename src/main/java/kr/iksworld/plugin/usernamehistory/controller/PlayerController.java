@@ -19,15 +19,11 @@ import org.bukkit.event.player.PlayerQuitEvent;
  */
 public class PlayerController implements Listener {
 
-    // DI
-
     private HistoryUpdateService usernameHistoryUpdateService;
 
     public PlayerController(HistoryUpdateService historyUpdateService) {
         usernameHistoryUpdateService = historyUpdateService;
     }
-
-    // Handle
 
     @EventHandler
     public void playerJoin(PlayerJoinEvent event) {
