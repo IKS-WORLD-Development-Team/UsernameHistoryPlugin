@@ -1,5 +1,7 @@
 package kr.iksworld.plugin.usernamehistory.service;
 
+import kr.iksworld.plugin.usernamehistory.service.exception.DaoException;
+
 /**
  * HistoryUpdateService 인터페이스.
  * (A interface of HistoryUpdateService.)
@@ -8,8 +10,8 @@ package kr.iksworld.plugin.usernamehistory.service;
  */
 public interface HistoryUpdateService<K, V> {
 
-    boolean joinUpdate(K key, V value);
+    boolean joinUpdate(K key, V value) throws DaoException;
 
-    boolean quitUpdate(K key, V value);
+    boolean quitUpdate(K key, V value) throws DaoException;
 
 }
