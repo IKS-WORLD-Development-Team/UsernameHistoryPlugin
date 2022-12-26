@@ -24,6 +24,9 @@ public class HistorySearchCondition<K, V> {
     private SearcherData<K> keyData;
     private SearcherData<V> valueData;
 
+    private TimeSearcherData startTime;
+    private TimeSearcherData endTime;
+
     private long startTimeMinCondition;
     private long startTimeMaxCondition;
     private long endTimeMinCondition;
@@ -37,6 +40,9 @@ public class HistorySearchCondition<K, V> {
 
         keyData = new SearcherData<>();
         valueData = new SearcherData<>();
+
+        startTime = new TimeSearcherData();
+        endTime = new TimeSearcherData();
 
         startTimeMinCondition = INITIAL_TIME_CONDITION;
         startTimeMaxCondition = INITIAL_TIME_CONDITION;
@@ -94,37 +100,22 @@ public class HistorySearchCondition<K, V> {
 
     // TimeSearcher Getter
 
-    public Optional<Long> getStartTimeMinCondition() {
-        if (startTimeMinCondition == -1) {
-            return Optional.ofNullable(null);
-        } else {
-            return Optional.of(startTimeMinCondition);
-        }
+    public Optional<Long> getStartTimeMin() {
+        return startTime.getMin();
     }
 
-    public Optional<Long> getStartTimeMaxCondition() {
-        if (startTimeMaxCondition == -1) {
-            return Optional.ofNullable(null);
-        } else {
-            return Optional.of(startTimeMaxCondition);
-        }
+    public Optional<Long> getStartTimeMax() {
+        return startTime.getMax();
     }
 
-    public Optional<Long> getEndTimeMinCondition() {
-        if (endTimeMinCondition == -1) {
-            return Optional.ofNullable(null);
-        } else {
-            return Optional.of(endTimeMinCondition);
-        }
+    public Optional<Long> getEndTimeMin() {
+        return endTime.getMin();
     }
 
-    public Optional<Long> getEndTimeMaxCondition() {
-        if (endTimeMaxCondition == -1) {
-            return Optional.ofNullable(null);
-        } else {
-            return Optional.of(endTimeMaxCondition);
-        }
+    public Optional<Long> getEndTimeMax() {
+        return endTime.getMax();
     }
+
 
 
     // Setting Setter
@@ -192,24 +183,42 @@ public class HistorySearchCondition<K, V> {
     }
 
 
-    public void setStartTimeMinCondition(long startTimeMinCondition) {
-        this.startTimeMinCondition = startTimeMinCondition;
+    // TimeSearcher Setter
+
+    public void setStartTimeMin(long time) {
+        startTime.setMin(time);
     }
 
-    public void setStartTimeMaxCondition(long startTimeMaxCondition) {
-        this.startTimeMaxCondition = startTimeMaxCondition;
+    public void setStartTimeMinNull() {
+        startTime.setMinNull();
     }
 
-    public void setEndTimeMinCondition(long endTimeMinCondition) {
-        this.endTimeMinCondition = endTimeMinCondition;
+    public void setStartTimeMax(long time) {
+        startTime.setMax(time);
     }
 
-    public void setEndTimeMaxCondition(long endTimeMaxCondition) {
-        this.endTimeMaxCondition = endTimeMaxCondition;
+    public void setStartTimeMaxNull() {
+        startTime.setMaxNull();
+    }
+
+    public void setEndTimeMin(long time) {
+        endTime.setMin(time);
+    }
+
+    public void setEndTimeMinNull() {
+        endTime.setMinNull();
+    }
+
+    public void setEndTimeMax(long time) {
+        endTime.setMax(time);
+    }
+
+    public void setEndTimeMaxNull() {
+        endTime.setMaxNull();
     }
 
 
-    // Inner Class
+    // Inner Enum
 
     enum ElementNumberType {
         ALL, ONLY_FIRST;
